@@ -31,7 +31,8 @@ public class EmployeeController {
     @PutMapping("/employee/{id}")
     public Employee update(@PathVariable String id, @RequestBody Employee employee) {
         LOG.debug("Received employee create request for id [{}] and employee [{}]", id, employee);
-
+        // Potential Improvement: Verify if the employee exists in the service layer,
+        //  as the current behavior will act the same as creating an employee if the employee doesn't exist.
         employee.setEmployeeId(id);
         return employeeService.update(employee);
     }

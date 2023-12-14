@@ -29,10 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee read(String id) {
-        LOG.debug("Creating employee with id [{}]", id);
+        LOG.debug("Reading employee with id [{}]", id);
 
         Employee employee = employeeRepository.findByEmployeeId(id);
-
+        // Potential Improvement: Don't throw an exception but return a specific
+        //   http response such as not found, throwing a runtime exception for a
+        //   valid/expected case seems not best practice.
         if (employee == null) {
             throw new RuntimeException("Invalid employeeId: " + id);
         }

@@ -3,6 +3,8 @@ package com.mindex.challenge.data;
 import java.util.List;
 
 public class Employee {
+    // Potential Improvement: Explicitly make the employeeId a primary key
+    //  by adding the @id annotation.
     private String employeeId;
     private String firstName;
     private String lastName;
@@ -17,6 +19,9 @@ public class Employee {
         return employeeId;
     }
 
+    // Potential Improvement: Don't allow the employee id to be set but generate
+    //  the employee id when the employee is constructed, increases security by
+    //  not letting other components change the employee's id.
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
